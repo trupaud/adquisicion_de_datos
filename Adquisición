@@ -1,0 +1,69 @@
+CONST ULNcio Deta - 3טכע
+
+// Habilito USB
+
+stdio_init_all();
+
+// Configuro el I2C0 a 100 KHz de clock
+
+12c_init(12c0, 100 * 1000);
+
+// Elijo GPIO4 como linea de SDA gpio_set_function(4, GPIO_FUNC_I2C);
+
+// Elijo GPIOS como linea de SCL gpio_set_function(5, GPIO_FUNC_I2C);
+
+// Activo pull-up en ambos GPIO, son debiles por lo que
+
+// es recomendable usar pull-ups externas
+
+gpio_pull_up(4);
+
+gpio_pull_up(5);
+
+// Inicializacion del LCD
+
+lcd_init();
+
+// Inicializo ADC
+
+adc_init();
+
+// Inicializo GPIO26 como entrada analogiCA
+
+adc_gpio_init(26);
+
+// Selecciono canal analogico
+
+adc_select_input(0);
+
+
+while(true) {
+
+// Leer NTC
+
+uint16_t adc_value = adc_read();
+
+FLOAT vx ( adc_value * 3.3)/4095; FLOAT rntc = 3300/((3.3/VX)-1);
+
+// Calculo temperatura
+
+float(=/1/(4000/(log(rntc/2200)+4000/298));
+
+// Limpio LCD
+
+lcd_clear();
+
+// Variable para el string
+
+char str[16];
+
+// Creo string
+
+// Imprimo string en segunda fila
+
+lcd_string(str);
+
+// Espero 500 ms sleep_ms(500);
+return 0;
+}
+}
